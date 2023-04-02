@@ -1,0 +1,56 @@
+Programa cliente servidor
+
+A ideia é que terá um servidor que armazena frases, para ser armazenado a frase será necessario passar tambem um identificador para ela.
+
+O servidor irá aguardar algum comando do cliente e realiza, se possivel, a solicitação.
+
+
+adicionar frase - adiciona-se frase da seguinte maneria:
+
+<operacao>'Adicionar';
+<identificador>'Id';
+<retorno>'Dia ensolarado';
+
+e terá um retorno:
+
+<operacao>'Resposta';
+<retorno>'Frase adicionada';
+
+ou
+
+<operacao>'Resposta';
+<retorno>'Não foi possivel adicionar';
+
+
+
+buscar frase - a busca será feita da seguinte maneira:
+
+<operacao>'Buscar';
+<identificador>'Id';
+
+e terá um retorno:
+
+<operacao>'Resposta';
+<retorno>'Dia ensolarado';
+
+ou
+
+<operacao>'Resposta';
+<retorno>'Frase não encontrada';
+
+
+
+remover frase - remove a frase da seguinte maneira:
+
+<operacao>'Remover';
+<identificador>'Id';
+
+e terá um retorno:
+
+<operacao>'Resposta';
+<retorno>'Frase removida';
+
+ou
+
+<operacao>'Resposta';
+<retorno>'Frase não encontrada';
