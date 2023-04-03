@@ -1,7 +1,8 @@
 import socket
 import threading
 
-frases = {}
+frases = {'Frase':'Dia bonito',
+          'Frase02':'Dia mais bonito'}
 
 def main():
 
@@ -53,7 +54,7 @@ def tratamentoMensagem(cliente, data):
                     pass
             else:
                 trat = f'{trat}{dados[i]}'
-            print(trat)
+            #print(trat)
         operacoes(cliente, tratado)
     except:
         return 'Erro ao tratar a mensagem'
@@ -67,7 +68,7 @@ def operacoes(cliente, dados_tratados):
 
     if tratados[0] == 'operacao':
         if tratados[1] == 'adicionar':
-            print('Realizando a operação: ', tratados[1])
+            print(cliente, 'Realizando a operação: ', tratados[1])
             try:
                 frases[tratados[3]] = tratados[5]
                 mensagem = '\nAdicionado com sucesso!\n'
@@ -77,7 +78,7 @@ def operacoes(cliente, dados_tratados):
                 envMenssagem(cliente, mensagem)
         
         elif tratados[1] == 'buscar':
-            print('Realizando a operação: ', tratados[1])
+            print(cliente, ' Realizando a operação: ', tratados[1])
             try:
                 frase = frases.get(tratados[3])
                 mensagem = f'\nFrase: {frase}\n'
@@ -86,8 +87,8 @@ def operacoes(cliente, dados_tratados):
                 mensagem = '\n<ERRO> Não foi possivel realizar a operação de busca\n'
                 envMenssagem(cliente, mensagem)
         
-        elif tratados[1] == 'Remover':
-            print('Realizando a operação: ', tratados[1])
+        elif tratados[1] == 'remover':
+            print(cliente, ' Realizando a operação: ', tratados[1])
             try:
                 frases.pop(tratados[3])
                 mensagem = '\nRemovido com sucesso!\n'
