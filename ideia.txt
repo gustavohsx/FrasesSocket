@@ -7,50 +7,60 @@ O servidor irá aguardar algum comando do cliente e realiza, se possivel, a soli
 
 adicionar frase - adiciona-se frase da seguinte maneria:
 
-<operacao>'Adicionar';
-<identificador>'Id';
-<frase>'Dia ensolarado';
+<operacao>adicionar;
+<identificador>Id;
+<frase>Dia ensolarado;
 
 e terá um retorno:
 
-<operacao>'Resposta';
-<retorno>'Frase adicionada';
+<operacao>resposta;
+<retorno>Frase adicionada;
 
 ou
 
-<operacao>'Resposta';
-<retorno>'Não foi possivel adicionar';
+<operacao>resposta;
+<retorno>Não foi possivel adicionar;
 
 
 
 buscar frase - a busca será feita da seguinte maneira:
 
-<operacao>'Buscar';
-<identificador>'Id';
+<operacao>buscar;
+<identificador>Id;
 
 e terá um retorno:
 
-<operacao>'Resposta';
-<retorno>'Dia ensolarado';
+<operacao>resposta;
+<retorno>Dia ensolarado;
 
 ou
 
-<operacao>'Resposta';
-<retorno>'Frase não encontrada';
+<operacao>resposta;
+<retorno>Frase não encontrada;
 
 
 
 remover frase - remove a frase da seguinte maneira:
 
-<operacao>'Remover';
+<operacao>remover;
 <identificador>'Id';
 
 e terá um retorno:
 
-<operacao>'Resposta';
+<operacao>resposta;
 <retorno>'Frase removida';
 
 ou
 
-<operacao>'Resposta';
-<retorno>'Frase não encontrada';
+<operacao>resposta;
+<retorno>Frase não encontrada;
+
+
+
+all - operacao que mostra todas as frases:
+
+<operacao>all;
+
+e terá um retorno:
+<operacao>retorno;
+<retorno>Frases;
