@@ -85,6 +85,16 @@ def operacoes(cliente, dados_tratados):
             except:
                 mensagem = '\n<ERRO> Não foi possivel realizar a operação de busca\n'
                 envMenssagem(cliente, mensagem)
+        
+        elif tratados[1] == 'Remover':
+            print('Realizando a operação: ', tratados[1])
+            try:
+                frases.pop(tratados[3])
+                mensagem = '\nRemovido com sucesso!\n'
+                envMenssagem(cliente, mensagem)
+            except:
+                mensagem = '\n<ERRO> Não foi possivel realizar a operação de remoção\n'
+                envMenssagem(cliente, mensagem)
     else:
         mensagem = f'\n<ERRO> Não foi possivel identificar a operação! {tratados[0]}\n'
         envMenssagem(cliente, mensagem)
