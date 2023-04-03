@@ -9,12 +9,11 @@ def main():
         client.connect(('localhost', 50000))
     except:
         return print('\nNão foi possívvel se conectar ao servidor!\n')
-
-    username = input('Usuário> ')
+    
     print('\nConectado')
 
     thread1 = threading.Thread(target=receiveMessages, args=[client])
-    thread2 = threading.Thread(target=sendMessages, args=[client, username])
+    thread2 = threading.Thread(target=sendMessages, args=[client])
 
     thread1.start()
     thread2.start()
@@ -23,8 +22,8 @@ def main():
 def receiveMessages(client):
     while True:
         try:
-            msg = client.recv(1024).decode()
-            print(msg+'\n')
+            msg = client.recv(2048).decode()
+            print(msg)
         except:
             print('\nNão foi possível permanecer conectado no servidor!\n')
             print('Pressione <Enter> Para continuar...')
@@ -32,12 +31,12 @@ def receiveMessages(client):
             break
 
 
-def sendMessages(client, username):
+def sendMessages(client):
     while True:
         try:
             msg = input('\n')
-            client.send(f'<{username}> {msg}'.encode())
+            client.send(f'{msg}'.encode())
         except:
-            return
+            return 'Não foi possivel enviar a mensagem'
 
 main()

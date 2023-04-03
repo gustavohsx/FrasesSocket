@@ -9,7 +9,7 @@ adicionar frase - adiciona-se frase da seguinte maneria:
 
 <operacao>'Adicionar';
 <identificador>'Id';
-<retorno>'Dia ensolarado';
+<frase>'Dia ensolarado';
 
 e terá um retorno:
 

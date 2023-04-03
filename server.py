@@ -24,17 +24,37 @@ def main():
 def menssagem(cliente, ender):
     while True:
         try:
-            data = cliente.recv(1024)
-            envMenssagem(cliente, data)
+            data = cliente.recv(2048)
+            tratamentoMensagem(cliente, data.decode())
         except:
             print(f'{ender} desconectado')
             break
 
 
 def envMenssagem(cliente, data):
-    cliente.sendall(data)
-    if not data:
-        print('Fechando conexão')
-        cliente.close()
+    cliente.sendall(data.encode())
+
+
+def tratamentoMensagem(cliente, data):
+    dados = str(data)
+    tratado = []
+    trat = ''
+    try:
+        for i in range(len(dados)):
+            if dados[i] == '<':
+                pass
+            elif dados[i] == '>' or dados[i] == ';':
+                try:
+                    tratado.append(trat)
+                    trat = ''
+                except:
+                    pass
+            else:
+                trat = f'{trat}{dados[i]}'
+            print(trat)
+        envMenssagem(cliente, f'{tratado}')
+    except:
+        return 'Erro ao tratar a mensagem'
+    
 
 main()
