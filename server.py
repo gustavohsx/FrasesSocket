@@ -70,9 +70,13 @@ def operacoes(cliente, dados_tratados):
         if tratados[1] == 'adicionar':
             print(cliente, 'Realizando a operação: ', tratados[1])
             try:
-                frases[tratados[3]] = tratados[5]
-                mensagem = '\nAdicionado com sucesso!\n'
-                envMenssagem(cliente, mensagem)
+                if not frases.get(tratados[3]):
+                    frases[tratados[3]] = tratados[5]
+                    mensagem = '\nAdicionado com sucesso!\n'
+                    envMenssagem(cliente, mensagem)
+                else:
+                    mensagem = '\n<ERRO> Já existe frase com esse identificador!\n'
+                    envMenssagem(cliente, mensagem)
             except:
                 mensagem = '\n<ERRO> Não foi possivel realizar a operação de adição\n'
                 envMenssagem(cliente, mensagem)
@@ -96,6 +100,17 @@ def operacoes(cliente, dados_tratados):
             except:
                 mensagem = '\n<ERRO> Não foi possivel realizar a operação de remoção\n'
                 envMenssagem(cliente, mensagem)
+        
+        elif tratados[1] == 'all':
+            print(cliente, ' Realizando a operação: ', tratados[1])
+            try:
+                for chave in frases.keys():
+                    mensagem += f'\nID: {chave} -  {frases[chave]}'
+                envMenssagem(cliente, mensagem)
+            except:
+                mensagem = '\n<ERRO> Não foi possivel realizar a operação de mostrar todas as frases\n'
+                envMenssagem(cliente, mensagem)
+            
     else:
         mensagem = f'\n<ERRO> Não foi possivel identificar a operação! {tratados[0]}\n'
         envMenssagem(cliente, mensagem)
