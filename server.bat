@@ -1,3 +1,3 @@
 @echo off
 echo Executando Servidor
-python.exe server.py
+python.exe ./servidor/server.py
