@@ -66,53 +66,54 @@ def operacoes(cliente, dados_tratados):
     mensagem = ''
     print(tratados)
 
-    if tratados[0] == 'operacao':
-        if tratados[1] == 'adicionar':
-            print(cliente, 'Realizando a operação: ', tratados[1])
-            try:
-                if not frases.get(tratados[3]):
-                    frases[tratados[3]] = tratados[5]
-                    mensagem = '\nAdicionado com sucesso!\n'
-                    envMenssagem(cliente, mensagem)
-                else:
-                    mensagem = '\n<ERRO> Já existe frase com esse identificador!\n'
-                    envMenssagem(cliente, mensagem)
-            except:
-                mensagem = '\n<ERRO> Não foi possivel realizar a operação de adição\n'
-                envMenssagem(cliente, mensagem)
-        
-        elif tratados[1] == 'buscar':
-            print(cliente, ' Realizando a operação: ', tratados[1])
-            try:
-                frase = frases.get(tratados[3])
-                mensagem = f'\nFrase: {frase}\n'
-                envMenssagem(cliente, mensagem)
-            except:
-                mensagem = '\n<ERRO> Não foi possivel realizar a operação de busca\n'
-                envMenssagem(cliente, mensagem)
-        
-        elif tratados[1] == 'remover':
-            print(cliente, ' Realizando a operação: ', tratados[1])
-            try:
-                frases.pop(tratados[3])
-                mensagem = '\nRemovido com sucesso!\n'
-                envMenssagem(cliente, mensagem)
-            except:
-                mensagem = '\n<ERRO> Não foi possivel realizar a operação de remoção\n'
-                envMenssagem(cliente, mensagem)
-        
-        elif tratados[1] == 'all':
-            print(cliente, ' Realizando a operação: ', tratados[1])
-            try:
-                for chave in frases.keys():
-                    mensagem += f'\nID: {chave} -  {frases[chave]}'
-                envMenssagem(cliente, mensagem)
-            except:
-                mensagem = '\n<ERRO> Não foi possivel realizar a operação de mostrar todas as frases\n'
-                envMenssagem(cliente, mensagem)
+    try:
+        if tratados[0] == 'op':
             
-    else:
-        mensagem = f'\n<ERRO> Não foi possivel identificar a operação! {tratados[0]}\n'
+            if tratados[1] == 'adicionar':
+                print(cliente, 'Realizando a operação: ', tratados[1])
+                try:
+                    if not frases.get(tratados[3]):
+                        frases[tratados[3]] = tratados[5]
+                        mensagem = f'<op>{tratados[1]};<retorno>Adicionado com sucesso!;'
+                        envMenssagem(cliente, mensagem)
+                    else:
+                        mensagem = '<op>ERRO;<retorno>Já existe frase com esse identificador!;'
+                        envMenssagem(cliente, mensagem)
+                except:
+                    mensagem = '<op>ERRO;<retorno>Não foi possivel realizar a operação de adição;'
+                    envMenssagem(cliente, mensagem)
+            
+            elif tratados[1] == 'buscar':
+                print(cliente, ' Realizando a operação: ', tratados[1])
+                try:
+                    frase = frases.get(tratados[3])
+                    mensagem = f'<op>{tratados[1]};<retorno>Frase: {frase};'
+                    envMenssagem(cliente, mensagem)
+                except:
+                    mensagem = '<op>ERRO;<retorno>Não foi possivel realizar a operação de busca;'
+                    envMenssagem(cliente, mensagem)
+            
+            elif tratados[1] == 'remover':
+                print(cliente, ' Realizando a operação: ', tratados[1])
+                try:
+                    frases.pop(tratados[3])
+                    mensagem = f'<op>{tratados[1]};<retorno>Removido com sucesso!;'
+                    envMenssagem(cliente, mensagem)
+                except:
+                    mensagem = '<op>ERRO;<retorno>Não foi possivel realizar a operação de remoção;'
+                    envMenssagem(cliente, mensagem)
+            
+            elif tratados[1] == 'all':
+                print(cliente, ' Realizando a operação: ', tratados[1])
+                try:
+                    for chave in frases.keys():
+                        mensagem += f'<op>{tratados[1]};<retorno>ID: {chave} -  {frases[chave]};'
+                    envMenssagem(cliente, mensagem)
+                except:
+                    mensagem = '<op>ERRO;<retorno>Não foi possivel realizar a operação de mostrar todas as frases;'
+                    envMenssagem(cliente, mensagem)
+    except:
+        mensagem = f'<op>ERRO;<retorno>Não foi possivel identificar a operação!;'
         envMenssagem(cliente, mensagem)
 
 

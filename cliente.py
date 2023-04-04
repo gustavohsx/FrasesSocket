@@ -23,10 +23,10 @@ def receiveMessages(client):
     while True:
         try:
             msg = client.recv(2048).decode()
-            print(msg)
+            tratamentoMensagem(msg)
         except:
             print('\nNão foi possível permanecer conectado no servidor!\n')
-            print('Pressione <Enter> Para continuar...')
+            print('Pressione <Enter> Para continuar...\n')
             client.close()
             break
 
@@ -38,5 +38,49 @@ def sendMessages(client):
             client.send(f'{msg}'.encode())
         except:
             return 'Não foi possivel enviar a mensagem'
+    
+
+def tratamentoMensagem(data):
+    dados = str(data)
+    tratado = []
+    trat = ''
+    try:
+        for i in range(len(dados)):
+            if dados[i] == '<':
+                pass
+            elif dados[i] == '>' or dados[i] == ';':
+                try:
+                    tratado.append(trat)
+                    trat = ''
+                except:
+                    pass
+            else:
+                trat = f'{trat}{dados[i]}'
+        mostrarMensagem(tratado)
+    except:
+        return '<Erro> Não foi possivel tratar a mensagem!'
+    
+
+def mostrarMensagem(msg):
+    mensagem = msg
+    try:
+        if mensagem[1] == 'all':
+            for i in range(3, len(mensagem), 4):
+                print('>>>',mensagem[i],'\n')
+
+        elif mensagem[1] == 'buscar':
+            print('>>>',mensagem[3],'\n')
+
+        elif mensagem[1] == 'remover':
+            print('>>>',mensagem[3],'\n')
+
+        elif mensagem[1] == 'adicionar':
+            print('>>>',mensagem[3],'\n')
+            
+        elif mensagem[1] == 'ERRO':
+            print('\n>>>',mensagem[3], '\n')
+    except:
+        return '<ERRO>Não foi possivel tratar a mensagem!'
+
 
 main()
