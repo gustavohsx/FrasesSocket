@@ -12,4 +12,5 @@ A documentação do Protocolo pode ser acessada [clicando aqui](https://docs.goo
 
 Existe dois arquivos .bat, eles são para usuários Windows. Caso não queira ficar abrindo novos terminais, poderá simplismente executar o arquivo.
 >Deve-se executar primeiro o server.bat - que só poderá ter um aberto
+
 >Pode abrir quantos cliente desejar
