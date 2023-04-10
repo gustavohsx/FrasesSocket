@@ -7,6 +7,9 @@ Implementar Socket e um Protocolo de Comunicação desenvolvido por você mesmo.
 >Foi feito em Python na versão 3.10.4
 
 
+[DockerHub](https://hub.docker.com/repository/docker/gustavohsx/frases-socket)
+
+
 A documentação do Protocolo pode ser acessada [clicando aqui](https://docs.google.com/document/d/1QZykIyZQsbNP39wQJSB7Se5PfQrCul0deqCUwJkVpdo/edit?usp=share_link)
 
 
